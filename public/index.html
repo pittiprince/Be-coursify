@@ -7,10 +7,12 @@
 <link rel="stylesheet" href="console.css">
 </head>
 <body>
-<header>
-  <h1>Coursify <span>API demo console</span></h1>
-  <p>A real client for this backend: every button below calls the live REST API (JWT auth, role separation for learners and instructors, ownership checks). The log on the right shows each raw request and response.</p>
-</header>
+<div class="topbar"><div class="brand"><span class="logo">C</span>Coursify</div><span class="spacer"></span><span class="badge">API demo console</span></div>
+<section class="hero">
+  <span class="badge">Live demo data</span>
+  <h1>Learn from instructors, powered by your API</h1>
+  <p>Every button calls the live REST API: JWT auth, learner and instructor roles, ownership checks. The log at the bottom shows each raw request and response.</p>
+</section>
 <main>
   <section class="col">
     <div class="card">
@@ -39,12 +41,9 @@
       <h2>2 · Course catalogue <small id="count"></small></h2>
       <div id="courses" class="grid"></div>
     </div>
-    <div class="card">
-      <h2>Request / response log</h2>
-      <pre id="log">Waiting for the first request…</pre>
-    </div>
   </section>
 </main>
+<footer class="logbar"><h2>Request / response log <span class="badge">proof of work</span></h2><pre id="log">Waiting for the first request…</pre></footer>
 <script src="console.js"></script>
 </body>
 </html>

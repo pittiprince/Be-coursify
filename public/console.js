@@ -20,14 +20,14 @@
       var box = $('courses'); box.textContent = '';
       list.forEach(function (c, i) {
         var d = document.createElement('div'); d.className = 'course';
-        var t = document.createElement('div'); t.className = 'thumb'; t.style.background = 'hsl(' + hues[i % hues.length] + ',55%,38%)'; t.textContent = 'COURSE ' + (i + 1);
+        var t = document.createElement('div'); t.className = 'thumb'; t.textContent = 'COURSE ' + (i + 1);
         var b = document.createElement('div'); b.className = 'b';
         var h = document.createElement('h3'); h.textContent = c.title;
         var f = document.createElement('div'); f.className = 'f';
         var p = document.createElement('span'); p.className = 'price'; p.textContent = '₹' + c.price;
         f.appendChild(p);
         if (role === 'user') { var btn = document.createElement('button'); btn.textContent = 'Buy'; btn.onclick = function () { buy(c._id); }; f.appendChild(btn); }
-        if (role === 'admin' && token) { var del = document.createElement('button'); del.className = 'ghost'; del.textContent = 'Delete'; del.onclick = function () { remove(c._id); }; f.appendChild(del); }
+        if (role === 'admin' && token) { var del = document.createElement('button'); del.className = 'danger'; del.textContent = 'Delete'; del.onclick = function () { remove(c._id); }; f.appendChild(del); }
         b.appendChild(h); b.appendChild(f); d.appendChild(t); d.appendChild(b); box.appendChild(d);
       });
     });
