@@ -75,3 +75,6 @@ curl -X POST http://localhost:3000/api/user/signin \
 5. Open `https://<your-service>.onrender.com/health` to confirm it is up.
 
 Free Render services sleep after about 15 minutes without traffic, so the first request after a pause can take up to a minute.
+
+## Demo
+Set `SEED_DEMO=true` to load demo data on start (learner demo-user@coursify.dev, instructor demo-admin@coursify.dev, password Demo@12345). `/` serves a small live console that calls the API.

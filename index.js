@@ -16,6 +16,7 @@ async function main() {
     try {
         await mongoose.connect(process.env.MongooseURL);
         console.log('Connected to MongoDB');
+        if (process.env.SEED_DEMO === 'true') await require('./seed').seedDemoData();
         app.listen(PORT, '0.0.0.0', () => {
             console.log(`Server listening on port ${PORT}`);
         });

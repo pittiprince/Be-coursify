@@ -36,6 +36,9 @@ app.use(['/api/user/signup', '/api/user/signin', '/api/admin/signup', '/api/admi
 // used by the hosting platform's health check
 app.get('/health', (req, res) => res.status(200).json({ ok: true }));
 
+// demo console (proof of work UI) served at /
+app.use(express.static(require('path').join(__dirname, 'public')));
+
 app.use('/api/user', userRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/course', courseRouter);

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coursify API – live demo console</title>
+<link rel="stylesheet" href="console.css">
+</head>
+<body>
+<header>
+  <h1>Coursify <span>API demo console</span></h1>
+  <p>A real client for this backend: every button below calls the live REST API (JWT auth, role separation for learners and instructors, ownership checks). The log on the right shows each raw request and response.</p>
+</header>
+<main>
+  <section class="col">
+    <div class="card">
+      <h2>1 · Sign in</h2>
+      <div class="tabs"><button class="tab on" data-role="user">Learner</button><button class="tab" data-role="admin">Instructor</button></div>
+      <form id="auth">
+        <input name="email" type="email" placeholder="email" required>
+        <input name="password" type="password" placeholder="password (min 8)" required>
+        <div class="row"><input name="FirstName" placeholder="first name (signup)"><input name="LastName" placeholder="last name (signup)"></div>
+        <div class="row"><button type="submit" data-act="signin">Sign in</button><button type="submit" data-act="signup" class="ghost">Sign up</button></div>
+      </form>
+      <p class="hint">Demo logins · learner <code>demo-user@coursify.dev</code> · instructor <code>demo-admin@coursify.dev</code> · password <code>Demo@12345</code>
+        <button id="fill" class="link">fill</button></p>
+      <p id="who" class="who">Not signed in</p>
+    </div>
+    <div class="card" id="adminCard" hidden>
+      <h2>Instructor · create a course</h2>
+      <form id="create"><input name="title" placeholder="title" required><input name="price" type="number" min="0" placeholder="price" required><button>Create course</button></form>
+    </div>
+    <div class="card" id="myCard" hidden>
+      <h2>My purchased courses</h2><ul id="mine"></ul>
+    </div>
+  </section>
+  <section class="col wide">
+    <div class="card">
+      <h2>2 · Course catalogue <small id="count"></small></h2>
+      <div id="courses" class="grid"></div>
+    </div>
+    <div class="card">
+      <h2>Request / response log</h2>
+      <pre id="log">Waiting for the first request…</pre>
+    </div>
+  </section>
+</main>
+<script src="console.js"></script>
+</body>
+</html>
