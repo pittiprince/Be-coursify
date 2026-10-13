@@ -20,7 +20,7 @@
       var box = $('courses'); box.textContent = '';
       list.forEach(function (c, i) {
         var d = document.createElement('div'); d.className = 'course';
-        var t = document.createElement('div'); t.className = 'thumb'; if (c.thumbnailUrl) { var im = document.createElement('img'); im.src = c.thumbnailUrl; im.alt = c.title; im.loading = 'lazy'; t.appendChild(im); } else { t.textContent = 'COURSE ' + (i + 1); }
+        var t = document.createElement('div'); t.className = 'thumb'; if (c.thumbnailUrl) { var im = document.createElement('img'); im.src = c.thumbnailUrl; im.alt = c.title; im.loading = 'lazy'; im.onerror = function () { im.remove(); t.textContent = 'COURSE ' + (i + 1); }; t.appendChild(im); } else { t.textContent = 'COURSE ' + (i + 1); }
         var b = document.createElement('div'); b.className = 'b';
         var h = document.createElement('h3'); h.textContent = c.title;
         var f = document.createElement('div'); f.className = 'f';

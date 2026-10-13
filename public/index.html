@@ -9,6 +9,7 @@
 <body>
 <div class="topbar"><div class="brand"><span class="logo">C</span>Coursify</div><span class="spacer"></span><span class="badge">API demo console</span></div>
 <section class="hero">
+  <canvas id="fx" aria-hidden="true"></canvas>
   <span class="badge">Live demo data</span>
   <h1>Learn from instructors, powered by your API</h1>
   <p>Every button calls the live REST API: JWT auth, learner and instructor roles, ownership checks. The log at the bottom shows each raw request and response.</p>
@@ -21,7 +22,7 @@
       <form id="auth">
         <input name="email" type="email" placeholder="email" required>
         <input name="password" type="password" placeholder="password (min 8)" required>
-        <div class="row"><input name="FirstName" placeholder="first name (signup)"><input name="LastName" placeholder="last name (signup)"></div>
+        <div class="row"><input name="FirstName" placeholder="first name"><input name="LastName" placeholder="last name"></div>
         <div class="row"><button type="submit" data-act="signin">Sign in</button><button type="submit" data-act="signup" class="ghost">Sign up</button></div>
       </form>
       <p class="hint">Demo logins · learner <code>demo-user@coursify.dev</code> · instructor <code>demo-admin@coursify.dev</code> · password <code>Demo@12345</code>
@@ -45,5 +46,6 @@
 </main>
 <footer class="logbar"><h2>Request / response log <span class="badge">proof of work</span></h2><pre id="log">Waiting for the first request…</pre></footer>
 <script src="console.js"></script>
+<script src="fx.js"></script>
 </body>
 </html>
