@@ -12,7 +12,7 @@ const app = express();
 // Render (and most hosts) put a proxy in front of the app; needed so rate limiting sees the real client IP
 app.set('trust proxy', 1);
 
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: { directives: { ...helmet.contentSecurityPolicy.getDefaultDirectives(), 'img-src': ["'self'", 'data:', 'https:'] } } }));
 
 // CORS_ORIGIN can be a comma separated list, e.g. https://my-frontend.vercel.app
 // When it is not set every origin is allowed (fine for a public demo API that uses bearer tokens).

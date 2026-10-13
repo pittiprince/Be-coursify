@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const { userModel, adminModel, courseModel, purchaseModel } = require('./db');
 
 const DEMO_PASSWORD = 'Demo@12345';
+const thumb = (title) => `https://picsum.photos/seed/coursify-${encodeURIComponent(title.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}/640/360`;
 const COURSES = [
     ['Full-Stack Web Development with Node & React', 2499],
     ['Data Structures & Algorithms in Python', 1999],
@@ -22,8 +23,9 @@ async function seedDemoData() {
     if (!user) user = await userModel.create({ email: 'demo-user@coursify.dev', password: hash, FirstName: 'Demo', LastName: 'Learner' });
 
     if ((await courseModel.countDocuments({ CreatorId: admin._id })) === 0) {
-        await courseModel.insertMany(COURSES.map(([title, price]) => ({ CreatorId: admin._id, title, price })));
+        await courseModel.insertMany(COURSES.map(([title, price]) => ({ CreatorId: admin._id, title, price, thumbnailUrl: thumb(title) })));
     }
+    else for (const [title] of COURSES) await courseModel.updateOne({ CreatorId: admin._id, title, thumbnailUrl: { $exists: false } }, { $set: { thumbnailUrl: thumb(title) } });
     const first = await courseModel.findOne({ CreatorId: admin._id });
     if (first && !(await purchaseModel.findOne({ userId: user._id, courseId: first._id }))) {
         await purchaseModel.create({ userId: user._id, courseId: first._id });

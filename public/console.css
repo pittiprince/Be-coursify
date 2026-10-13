@@ -1,6 +1,5 @@
 /* shadcn/ui "new-york" tokens, storefront layout */
 :root{--background:oklch(1 0 0);--foreground:oklch(.145 0 0);--card:oklch(1 0 0);--primary:oklch(.205 0 0);--primary-foreground:oklch(.985 0 0);--secondary:oklch(.97 0 0);--muted:oklch(.97 0 0);--muted-foreground:oklch(.45 0 0);--border:oklch(.922 0 0);--input:oklch(.922 0 0);--ring:oklch(.708 0 0);--destructive:oklch(.577 .245 27.325);--surface:oklch(.98 0 0);--radius:.625rem;--font-sans:ui-sans-serif,system-ui,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,monospace}
-@media (prefers-color-scheme:dark){:root{--background:oklch(.145 0 0);--foreground:oklch(.985 0 0);--card:oklch(.205 0 0);--primary:oklch(.922 0 0);--primary-foreground:oklch(.205 0 0);--secondary:oklch(.269 0 0);--muted:oklch(.269 0 0);--muted-foreground:oklch(.708 0 0);--border:#ffffff1a;--input:#ffffff26;--ring:oklch(.556 0 0);--destructive:oklch(.704 .191 22.216);--surface:oklch(.2 0 0)}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--background);color:var(--foreground);font:14px/1.5 var(--font-sans);min-height:100vh;display:flex;flex-direction:column}
 .topbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:14px 32px;border-bottom:1px solid var(--border)}
@@ -32,7 +31,8 @@ code{font:12px var(--font-mono);background:var(--muted);padding:2px 6px;border-r
 .who{margin:8px 0 0;font-size:13px;font-weight:500;padding:8px 12px;border:1px solid var(--border);border-radius:calc(var(--radius)*.8);background:var(--surface)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}
 .course{display:flex;flex-direction:column;gap:10px}
-.thumb{height:150px;border-radius:14px;background:var(--muted);color:var(--muted-foreground);display:grid;place-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb{height:150px;overflow:hidden;border-radius:14px;background:var(--muted);color:var(--muted-foreground);display:grid;place-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 .course .b{display:flex;flex-direction:column;gap:8px;flex:1}.course h3{margin:0;font-size:15px;font-weight:600;line-height:1.35}
 .badge{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:1px 10px;font-size:12px;font-weight:500;width:fit-content}
 .price{font-weight:600;font-size:15px}.stock{color:var(--muted-foreground);font-size:12px}
