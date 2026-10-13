@@ -1,21 +1,14 @@
 const { Router } = require('express');
 const courseRouter = Router();
-const { courseModel } = require('../db')
+const { courseModel } = require('../db');
+const asyncHandler = require('../utils/asyncHandler');
 
-courseRouter.get('/courses/all',async(req,res)=>{
-    let allCourses = await courseModel.find()
-    if(allCourses.length > 0){
-        res.status(200).json({
-            allCourses:allCourses
-        })
-    }
-    else{
-        res.status(200).json({
-            msg:"No courses"
-        })
-    }
-})
+// public catalogue
+courseRouter.get('/courses/all', asyncHandler(async (req, res) => {
+    const allCourses = await courseModel.find();
+    return res.status(200).json({ allCourses });
+}));
 
-module.exports={
+module.exports = {
     courseRouter
-}
+};
